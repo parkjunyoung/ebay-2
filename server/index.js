@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
  
 const app = express();
  
@@ -28,6 +29,13 @@ sequelize
 })
     .catch(err => {
     console.error('Unable to connect to the database:', err);
+});
+
+// SERVE STATIC FILES - REACT PROJECT
+app.use('/', express.static( path.join(__dirname, '../public') ));
+
+app.get('*', function(req,res){
+  res.sendFile(path.resolve(__dirname, '../public', 'index.html'));
 });
  
 app.get('/', (req, res) => {
