@@ -6,6 +6,8 @@ class ProductWrite extends Component {
     constructor(){
         super();
         this.state = {
+            method : "post",
+            action : "/api/admin/products",
             product_name : "",
             price : "",
             sale_price : "",
@@ -15,6 +17,26 @@ class ProductWrite extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        let urlSecondPath = this.props.location.pathname.split('/')[3];
+        let productId = this.props.match.params.id;
+        
+        if(urlSecondPath==='edit'){
+            axios.get(`/api/admin/products/${productId}`, {
+            }).then( (res) => {
+                this.setState({
+                    method : "put", 
+                    action : `/api/admin/products/${productId}`,
+                    product_name : res.data.product.product_name,
+                    price : res.data.product.price,
+                    sale_price : res.data.product.sale_price,
+                    description : res.data.product.description
+                });
+            }).catch( (error) => {
+                console.log(error);
+            });
+        }
+    }
 
     handleChange(event){
         let result = {};
@@ -35,11 +57,15 @@ class ProductWrite extends Component {
             return;
         }
 
-        axios.post('/api/admin/products', {
-            product_name : this.state.product_name,
-            price : this.state.price,
-            sale_price : this.state.sale_price,
-            description : this.state.description
+        axios({
+            method : this.state.method,
+            url : this.state.action,
+            data : {
+                product_name : this.state.product_name,
+                price : this.state.price,
+                sale_price : this.state.sale_price,
+                description : this.state.description
+            },
         }).then( (res) => {
             if(res.data.message==="success"){
                 alert('작성되었습니다.');
@@ -62,13 +88,13 @@ class ProductWrite extends Component {
                             <tr>
                                 <th>제품명</th>
                                 <td>
-                                    <input type="text" className="form-control" name="product_name" ref="product_nameRef" value={this.state.title} onChange={this.handleChange} />
+                                    <input type="text" className="form-control" name="product_name" ref="product_nameRef" value={this.state.product_name} onChange={this.handleChange} />
                                 </td>
                             </tr>
                             <tr>
                                 <th>제품이미지</th>
                                 <td>
-                                    <input type="file" />
+                                    <input type="file" name="thumbnail" />
                                 </td>
                             </tr>
                             <tr>
@@ -86,7 +112,7 @@ class ProductWrite extends Component {
                             <tr>
                                 <th>설명</th>
                                 <td>
-                                    <textarea className="form-control" name="description" onChange={this.handleChange} defaultValue={this.state.description}></textarea>
+                                    <textarea className="form-control" name="description" onChange={this.handleChange} value={this.state.description}></textarea>
                                 </td>
                             </tr>
                         </tbody>

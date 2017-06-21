@@ -57,7 +57,11 @@ class ProductList extends Component {
                             let createdAt = getDate(product.createdAt);
                             return (
                                 <tr key={key}>
-                                    <td>{product.product_name}</td>
+                                    <td>
+                                        <Link to={`/admin/products/${product.id}`}>
+                                            {product.product_name}
+                                        </Link>
+                                    </td>
                                     <td>{product.price}</td>
                                     <td>
                                         { createdAt.year } - 
