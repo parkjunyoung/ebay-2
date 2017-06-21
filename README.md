@@ -6,7 +6,7 @@
 | 제품전체 | /admin/products |
 | 제품상세 | /admin/products/:id |
 | 제품등록 | /admin/products/write |
-| 제품수정 | /admin/products/edit:id |
+| 제품수정 | /admin/products/edit/:id |
 
 ## API Rouring
 
