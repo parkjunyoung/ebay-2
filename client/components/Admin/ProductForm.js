@@ -15,6 +15,7 @@ class ProductWrite extends Component {
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFile = this.handleFile.bind(this);
     }
 
     componentDidMount() {
@@ -38,6 +39,10 @@ class ProductWrite extends Component {
         }
     }
 
+    handleFile(event){
+        this.setState({thumbnail:event.target.files[0]})
+    }
+
     handleChange(event){
         let result = {};
         result[event.target.name] = event.target.value;
@@ -57,15 +62,24 @@ class ProductWrite extends Component {
             return;
         }
 
+        const formData = new FormData();
+        formData.append('product_name', this.state.product_name);
+        formData.append('thumbnail', this.state.thumbnail);
+        formData.append('price', this.state.price);
+        formData.append('sale_price', this.state.sale_price);
+        formData.append('description', this.state.description);
+
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        };
+
         axios({
             method : this.state.method,
             url : this.state.action,
-            data : {
-                product_name : this.state.product_name,
-                price : this.state.price,
-                sale_price : this.state.sale_price,
-                description : this.state.description
-            },
+            data : formData,
+            config : config
         }).then( (res) => {
             if(res.data.message==="success"){
                 alert('작성되었습니다.');
@@ -94,7 +108,7 @@ class ProductWrite extends Component {
                             <tr>
                                 <th>제품이미지</th>
                                 <td>
-                                    <input type="file" name="thumbnail" />
+                                    <input type="file" name="thumbnail" onChange={this.handleFile}/>
                                 </td>
                             </tr>
                             <tr>
