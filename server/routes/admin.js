@@ -56,7 +56,7 @@ router.put('/products/:id', upload.single('thumbnail'), (req,res)=>{
         models.Products.update(
             {
                 product_name : req.body.product_name,
-                thumbnail : (req.file) ? req.file.filename : post.thumbnail ,
+                thumbnail : (req.file) ? req.file.filename : product.thumbnail ,
                 price : req.body.price ,
                 sale_price : req.body.sale_price ,
                 description : req.body.description

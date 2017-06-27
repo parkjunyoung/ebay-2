@@ -5,6 +5,7 @@ import logger from 'morgan';
 import bodyParser from 'body-parser';
  
 import admin from './routes/admin';
+import accounts from './routes/accounts';
  
 const app = express();
  
@@ -37,6 +38,7 @@ app.use('/uploads', express.static( path.join(__dirname, '../uploads') ));
 
 //API
 app.use('/api/admin', admin);
+app.use('/api/accounts', accounts);
 
 app.get('*', function(req,res){
   res.sendFile(path.resolve(__dirname, '../public', 'index.html'));
