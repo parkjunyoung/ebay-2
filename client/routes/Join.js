@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class Join extends Component {
     constructor(props) {
@@ -16,12 +17,44 @@ class Join extends Component {
 
     //상태 변할때마다 state값에 저장
     handleChange(event){
-        
+        let result = {};
+        result[event.target.name] = event.target.value;
+        this.setState(result);
     }
 
     //form 전송
     handleSubmit(event){
+        event.preventDefault();
+        if(!this.state.username){
+            alert("이름을 입력하세요");
+            this.refs.usernameRef.focus();
+            return;
+        }
+        if(!this.state.password){
+            alert("비밀번호를 입력하세요");
+            this.refs.passwordRef.focus();
+            return;
+        }
+        if(!this.state.displayname){
+            alert("닉네임을 입력하세요");
+            this.refs.displaynameRef.focus();
+            return;
+        }
         
+        //POST /api/accounts/join 요청
+        axios.post('/api/accounts/join', {
+            username : this.state.username,
+            displayname : this.state.displayname,
+            password : this.state.password
+        }).then( (res) => {
+            if(res.data.message==="success"){
+                alert('회원가입성공');
+                this.props.history.push('/login');
+            }
+        }).catch( (error) => {
+            console.log(error);
+        });
+
 
     }
 
