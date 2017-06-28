@@ -7,6 +7,8 @@
 | 제품상세 | /admin/products/:id |
 | 제품등록 | /admin/products/write |
 | 제품수정 | /admin/products/edit/:id |
+| 회원가입 | /join |
+| 로그인 | /login |
 
 ## API Rouring
 
@@ -16,4 +18,7 @@
 | POST | /api/admin/products |
 | GET | /api/admin/products/:id |
 | PUT | /api/admin/products/:id |
-| DELETE | /api/admin/products/:id |
+| POST | /api/accounts/join |
+| POST | /api/accounts/login |
+| GET | /api/accounts/success |
+| GET | /api/accounts/logout |
