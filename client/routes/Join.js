@@ -86,7 +86,7 @@ class Join extends Component {
                                     
                                     <input type="submit" className="btn btn-lg btn-success btn-block" value="가입하기" />
                                     <div style={{ marginTop: "10px" }}>
-                                        <a href="/auth/facebook" className="btn btn-lg btn-primary btn-block">
+                                        <a href="/api/auth/facebook" className="btn btn-lg btn-primary btn-block">
                                             <i className="fa fa-facebook" aria-hidden="true"></i> 페이스북으로 회원가입
                                         </a>
                                     </div>

@@ -9,6 +9,7 @@ import session from 'express-session';
  
 import admin from './routes/admin';
 import accounts from './routes/accounts';
+import auth from './routes/auth';
  
 const app = express();
  
@@ -62,6 +63,7 @@ app.use(passport.session());
 //API
 app.use('/api/admin', admin);
 app.use('/api/accounts', accounts);
+app.use('/api/auth', auth);
 
 app.get('*', function(req,res){
   res.sendFile(path.resolve(__dirname, '../public', 'index.html'));
