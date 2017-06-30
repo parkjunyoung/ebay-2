@@ -26,7 +26,7 @@ passport.use(new LocalStrategy({
                 password : passwordHash(password) ,
              }
         }).then(function(user) {
-            if (!user.dataValues){
+            if (!user){
                 return done(null, false, { message: '아이디 또는 비밀번호 오류 입니다.' });
             }else{
                 return done(null, user.dataValues );
