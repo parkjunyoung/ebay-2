@@ -32,19 +32,7 @@ class Login extends Component {
             return;
         }
 
-        axios.post('/api/accounts/login', {
-            username : this.state.username,
-            password : this.state.password
-        }).then( (res) => {
-            if(res.data.message==="success"){
-                alert('로그인이 성공하였습니다.');
-                document.location.href = "/api/accounts/success";
-            }else{
-                alert(res.data.message);
-            }
-        }).catch( (error) => {
-            console.log(error);
-        });
+        this.props.requestLogin( this.state.username , this.state.password );
 
 
     }
