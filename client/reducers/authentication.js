@@ -17,6 +17,10 @@ const authentication = ( state = initialState , action ) => {
                 message : action.message,
                 pending : false
             }
+        case types.REQUEST_STATUS :
+            return {
+                isLogin : action.isLogin
+            }
         default :
             return state;
     }

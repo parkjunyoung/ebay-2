@@ -19,3 +19,21 @@ export const requestLogin = ( username , password ) => dispatch => {
         );
     
 };
+
+export const requestStatus = () => dispatch => {
+
+    return axios.get( '/api/accounts/status')
+        .then(
+            (res) => dispatch({
+                type : types.REQUEST_STATUS,
+                isLogin : res.data.isLogin
+            })
+        ).catch( 
+            (error) => dispatch({
+                type : types.REQUEST_STATUS,
+                error : error
+            })
+        
+        );
+    
+};

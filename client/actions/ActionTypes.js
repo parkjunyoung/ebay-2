@@ -1,1 +1,2 @@
 export const REQUEST_LOGIN = 'REQUEST_LOGIN';
+export const REQUEST_STATUS = 'REQUEST_STATUS';

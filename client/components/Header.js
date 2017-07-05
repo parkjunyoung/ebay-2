@@ -5,6 +5,10 @@ import {LinkContainer} from 'react-router-bootstrap';
 
 class Header extends Component {
 
+    componentDidMount() {
+        this.props.requestStatus();
+    }
+
     render() {
         const Login = ()=>{
             return (

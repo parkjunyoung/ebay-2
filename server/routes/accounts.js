@@ -62,6 +62,10 @@ router.get('/success', function(req, res){
     res.send(req.user);
 });
 
+router.get('/status', function(req, res){
+    res.json({ isLogin : req.isAuthenticated() });
+});
+
 
 router.get('/logout', function(req, res){
     req.logout();
