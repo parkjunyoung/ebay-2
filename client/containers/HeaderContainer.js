@@ -8,6 +8,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     requestStatus : ( useranme , password ) => dispatch( actions.requestStatus() ),
+    requestLogout : ( useranme , password ) => dispatch( actions.requestLogout() )
 });
 
 const HeaderContainer = connect(

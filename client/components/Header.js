@@ -9,6 +9,14 @@ class Header extends Component {
         this.props.requestStatus();
     }
 
+    handleLogout(){
+        this.props.requestLogout().then( ()=>{
+            alert('로그아웃 되었습니다.')
+            this.props.history.push("/");
+            return true;
+        });
+    }
+
     render() {
         const Login = ()=>{
             return (
@@ -20,7 +28,7 @@ class Header extends Component {
 
         const Logout = ()=>{
             return (
-                <NavItem>LOGOUT</NavItem>
+                <NavItem onClick={ this.handleLogout.bind(this) }>LOGOUT</NavItem>
             )
         };
 

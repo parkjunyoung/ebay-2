@@ -37,3 +37,21 @@ export const requestStatus = () => dispatch => {
         );
     
 };
+
+export const requestLogout = () => dispatch => {
+
+    return axios.get( '/api/accounts/logout')
+        .then(
+            (res) => dispatch({
+                type : types.REQUEST_LOGOUT,
+                isLogin : false
+            })
+        ).catch( 
+            (error) => dispatch({
+                type : types.REQUEST_LOGOUT,
+                error : error
+            })
+        
+        );
+    
+};

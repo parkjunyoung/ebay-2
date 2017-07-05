@@ -21,6 +21,10 @@ const authentication = ( state = initialState , action ) => {
             return {
                 isLogin : action.isLogin
             }
+        case types.REQUEST_LOGOUT :
+            return {
+                isLogin : action.isLogin
+            }
         default :
             return state;
     }
