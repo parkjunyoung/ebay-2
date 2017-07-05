@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from '../routes/Home';
-import Header from './Header';
+import HeaderContainer from '../containers/HeaderContainer';
 import NotMatch from './NotMatch';
 import Admin from './Admin';
 import Join from '../routes/Join';
@@ -11,12 +11,13 @@ import { createStore, applyMiddleware  } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from '../reducers';
 import { createLogger } from 'redux-logger';
+import ReduxThunk from 'redux-thunk';
 
 const logger = createLogger(); 
 
 const store = createStore(
     reducers,
-    applyMiddleware( logger )
+    applyMiddleware( ReduxThunk, logger )
 );
 
 class App extends Component {
@@ -25,7 +26,7 @@ class App extends Component {
             <Provider store={ store }>
                 <Router>
                     <div>
-                        <Header />
+                        <HeaderContainer />
                         <Switch>
                             <Route exact path="/" component={Home} />
                             <Route path="/admin" component={Admin}/>

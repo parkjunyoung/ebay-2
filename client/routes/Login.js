@@ -32,7 +32,18 @@ class Login extends Component {
             return;
         }
 
-        this.props.requestLogin( this.state.username , this.state.password );
+        this.props.requestLogin( this.state.username , this.state.password ).then(
+            ()=>{
+                if(this.props.isLogin){
+                    alert('로그인이 성공하였습니다');
+                    this.props.history.push("/");
+                    return true;
+                }else{
+                    alert(this.props.message);
+                    return false;
+                }
+            }
+        );
 
 
     }

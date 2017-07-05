@@ -6,6 +6,20 @@ import {LinkContainer} from 'react-router-bootstrap';
 class Header extends Component {
 
     render() {
+        const Login = ()=>{
+            return (
+                <LinkContainer to="/login">
+                    <NavItem>LOGIN</NavItem>
+                </LinkContainer>
+            )
+        };
+
+        const Logout = ()=>{
+            return (
+                <NavItem>LOGOUT</NavItem>
+            )
+        };
+
         return (
             <Navbar inverse collapseOnSelect>
                 <Navbar.Header>
@@ -22,9 +36,7 @@ class Header extends Component {
                         <LinkContainer to="/join">
                             <NavItem>JOIN</NavItem>
                         </LinkContainer>
-                        <LinkContainer to="/login">
-                            <NavItem>LOGIN</NavItem>
-                        </LinkContainer>
+                        { this.props.isLogin ? <Logout/>  : <Login/> }
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
