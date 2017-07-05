@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Gallery from '../components/Gallery';
 import { Route } from 'react-router-dom';
+import ProductModal from '../components/ProductModal';
 
 class Home extends Component {
     constructor(){
@@ -27,6 +28,7 @@ class Home extends Component {
         return (
             <div>
                 <Gallery products={ this.state.products }/>
+                <Route path="/products/:id" component={ProductModal} />
             </div>
         );
     }
