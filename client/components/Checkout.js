@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CheckoutTr from './CheckoutTr';
 import numberFormat from '../helper/numberFormat';
+import CheckoutForm from './CheckoutForm';
 
 class Checkout extends Component {
     render() {
@@ -31,7 +32,7 @@ class Checkout extends Component {
                 <div className="text-center" style={{ fontSize: "30px" , marginBottom : "20px"}}>
                     결제금액 : <span style={{ color : "red"  }}> { numberFormat(this.props.totalAmount) } 원 </span>
                 </div>
-                
+                <CheckoutForm cartList={this.props.cartList} totalAmount={this.props.totalAmount}/>
             </div>
         );
     }
