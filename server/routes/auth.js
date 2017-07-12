@@ -53,7 +53,7 @@ router.get('/facebook', passport.authenticate('facebook', { scope: 'email'}) );
 router.get('/facebook/callback',
     passport.authenticate('facebook', 
         { 
-            successRedirect: '/api/auth/facebook/success', //성공시 이동
+            successRedirect: '/', //성공시 이동
             failureRedirect: '/api/auth/facebook/fail'  //실패시 이동
         }
     )

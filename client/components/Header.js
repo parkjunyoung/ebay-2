@@ -32,6 +32,14 @@ class Header extends Component {
             )
         };
 
+        const Join = () => {
+            return (
+                <LinkContainer to="/join">
+                    <NavItem>JOIN</NavItem>
+                </LinkContainer>
+            ) 
+        };
+
         return (
             <Navbar inverse collapseOnSelect>
                 <Navbar.Header>
@@ -45,9 +53,10 @@ class Header extends Component {
                         <LinkContainer to="/admin/products">
                             <NavItem>ADMIN</NavItem>
                         </LinkContainer>
-                        <LinkContainer to="/join">
-                            <NavItem>JOIN</NavItem>
+                        <LinkContainer to="/cart">
+                            <NavItem>CART</NavItem>
                         </LinkContainer>
+                        { this.props.isLogin ? "" : <Join/> }
                         { this.props.isLogin ? <Logout/>  : <Login/> }
                     </Nav>
                 </Navbar.Collapse>

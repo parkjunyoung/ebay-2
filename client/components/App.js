@@ -5,6 +5,7 @@ import HeaderContainer from '../containers/HeaderContainer';
 import NotMatch from './NotMatch';
 import Admin from './Admin';
 import Join from '../routes/Join';
+import Cart from '../components/Cart';
 import LoginContainer from '../containers/LoginContainer';
 
 import { createStore, applyMiddleware  } from 'redux';
@@ -33,6 +34,7 @@ class App extends Component {
                             <Route path="/admin" component={Admin}/>
                             <Route path="/join" component={Join}/>
                             <Route path="/login" component={LoginContainer}/>
+                            <Route path="/cart" component={Cart}/>
                             <Route component={NotMatch}/>
                         </Switch>
                     </div>
