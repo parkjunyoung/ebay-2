@@ -1,5 +1,7 @@
 import * as types from './ActionTypes';
 import axios from 'axios';
+import getCookie from '../helper/getCookie';
+import setCookieHour from '../helper/setCookieHour';
 
 export const requestLogin = ( username , password ) => dispatch => {
 
@@ -53,5 +55,39 @@ export const requestLogout = () => dispatch => {
             })
         
         );
+    
+};
+
+export const addCart = ( productId , number, amount ) => {
+
+    let cartList = {};
+    let totalAmount = 0;
+    if( getCookie('cartList') ){ 
+        //쿠키에서 검색후 있으면 json 파싱함
+        cartList = JSON.parse(getCookie('cartList'));
+    }
+
+    cartList[productId] = { 
+        number : number , 
+        amount : amount 
+    };
+    
+    // 배열의 경우 map, forEach가 사용가능하지만
+    // {}객체의 경우 아래와 같이 반복시킨다.
+    if( Object.keys(cartList).length ){
+        for( let key in cartList){
+            totalAmount += cartList[key].amount;
+        }
+    }
+
+    // string으로 저장되는데 나중에 {}형식으로 받기위해 stringfy로 저장
+    setCookieHour( "cartList" , JSON.stringify(cartList) , 3 );
+
+    return ({
+        type : types.ADD_CART,
+        cartList : cartList,
+        count : Object.keys(cartList).length,
+        totalAmount : totalAmount
+    });
     
 };

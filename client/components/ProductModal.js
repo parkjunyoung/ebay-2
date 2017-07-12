@@ -16,6 +16,7 @@ class ProductModal extends Component {
         };
         this.historyBack = this.historyBack.bind(this);
         this.changeCartNum = this.changeCartNum.bind(this);
+        this.addCart = this.addCart.bind(this);
     }
 
     componentDidMount(){
@@ -56,6 +57,17 @@ class ProductModal extends Component {
             cartNum : cartNum,
             totalPrice : (this.state.lastPrice * cartNum)
         });
+    }
+
+    addCart(){
+        if(confirm('장바구니에 담겠습니까?')){ 
+            this.props.addCart( 
+                this.props.match.params.id , //제품 아이디
+                this.state.cartNum , // 장바구니의 담은 갯수
+                this.state.totalPrice // 가격 * 갯수
+            );
+            alert("장바구니에 담겼습니다.");
+        }
     }
 
     historyBack(){
@@ -103,7 +115,8 @@ class ProductModal extends Component {
 
                 <Modal.Footer>
                     <Button onClick={ this.historyBack }>목록으로</Button>
-                    <Button className="btn btn-primary">장바구니 담기</Button>
+                    <Button  onClick={ () => { this.addCart() } } 
+                    className="btn btn-primary">장바구니 담기</Button>
                 </Modal.Footer>
 
             </Modal>
