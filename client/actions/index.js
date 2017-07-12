@@ -116,3 +116,29 @@ export const getCart = () => {
     });
     
 };
+
+export const removeCart = ( cartId ) => {
+    //cartId로 찾아서 delete로 날린다
+    let cartList = {};
+    let totalAmount = 0;
+    if( getCookie('cartList') ){ //있으면 json 파싱함
+        cartList = JSON.parse(getCookie('cartList'));
+        delete cartList[cartId];  //지우는 부분
+    }
+
+    if( Object.keys(cartList).length ){
+        for( let key in cartList){
+            totalAmount += cartList[key].amount;
+        }
+    }
+
+    setCookieHour( "cartList" , JSON.stringify(cartList) , 3 );
+
+    return ({
+        type : types.REMOVE_CART,
+        cartList : cartList,
+        count : Object.keys(cartList).length,
+        totalAmount : totalAmount
+    });
+    
+};

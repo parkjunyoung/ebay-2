@@ -52,7 +52,13 @@ class CartTr extends Component {
                     { numberFormat(this.props.cart.amount) } 원
                 </td>
                 <td>
-                    <a href="#" className="btn btn-danger">
+                    {/* 
+                        (event) => 이렇게 처리한 이유는 
+                        클릭시 링크를 prevetDefault로 막는데
+                        부모함수에서 removeCart를 처리하므로
+                        event변수도 넘겨줘야된다.
+                    */}
+                    <a href="#" className="btn btn-danger" onClick={ (event) => { this.props.removeCart(  this.props.cartId ,event ) } }>
                         장바구니 삭제
                     </a>
                 </td>

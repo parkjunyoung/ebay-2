@@ -8,7 +8,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    
+    removeCart : ( cartId ) => dispatch( actions.removeCart( cartId ) )
 });
 
 const CartContainer = connect(

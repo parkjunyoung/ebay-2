@@ -5,6 +5,19 @@ import { Link } from 'react-router-dom';
 
 class Cart extends Component {
 
+    constructor(){
+        super();
+        this.removeCart = this.removeCart.bind(this);
+    }
+
+    removeCart( cartId , event){
+        event.preventDefault();
+        if(confirm('장바구니에서 제거하시겠습니까?')){ 
+            this.props.removeCart(cartId);
+            alert("제거 되었습니다.");
+        }
+    }
+
     render() {
         return (
             <div>
@@ -25,7 +38,8 @@ class Cart extends Component {
                             return (
                                 <CartTr 
                                     cartId={cartId} key={key} 
-                                    cart={this.props.cartList[cartId]} />
+                                    cart={this.props.cartList[cartId]} 
+                                    removeCart={ this.removeCart }/>
                             )
                         })}
                     </tbody>
