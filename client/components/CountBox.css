@@ -1,0 +1,31 @@
+.printNum { 
+    float:left;
+    margin-right: 10px; 
+}
+.CountBox { 
+    width: 100px; 
+    float:left; 
+}
+.CountBox a { 
+    border : 1px solid #ddd; 
+    display:block; 
+    float:left; 
+    padding: 4px 8px; 
+    text-decoration: none;
+}
+.CountBox p { 
+    border-top : 1px solid #ddd; 
+    border-bottom : 1px solid #ddd; 
+    display:block; 
+    float:left; 
+    padding: 4px 8px; 
+}
+
+.priceWrap { 
+    float:right; 
+    font-size: 20px;
+}
+
+.priceWrap span::after { 
+    content : " 원";
+}
