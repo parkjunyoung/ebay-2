@@ -14,6 +14,12 @@ const Cart = ( state = initialState , action ) => {
                 cartList : action.cartList,
                 totalAmount : action.totalAmount
             }
+        case types.GET_CART :
+            return {
+                count : action.count,
+                cartList : action.cartList,
+                totalAmount : action.totalAmount
+            }
         default :
             return state;
     }

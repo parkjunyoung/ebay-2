@@ -4,23 +4,52 @@ import numberFormat from '../helper/numberFormat';
 
 class CartTr extends Component {
 
+    constructor(){
+        super();
+        this.state = { 
+            product : []
+        };
+    }
+
+    componentDidMount() {
+
+        axios.get(`/api/admin/products/${this.props.cartId}`, {
+        }).then( (res) => {
+           this.setState({
+                product: res.data.product
+            });
+        }).catch( (error) => {
+            console.log(error); 
+        });
+
+    }
+
+
     render() {
         return (
             <tr>
                 <td>
-                    이미지 영역
+                    {this.state.product.thumbnail ? 
+                        <img src={`/uploads/${this.state.product.thumbnail}`}  
+                        width="50" height="50" alt="" /> : ''
+                    }
+                    
                 </td>
                 <td>
-                    상품명
+                    {this.state.product.product_name}
                 </td>
                 <td>
-                    1,200원
+                    { 
+                        this.state.product.sale_price ?
+                        numberFormat(this.state.product.sale_price) :
+                        numberFormat(this.state.product.price) 
+                    } 원
                 </td>
                 <td>
-                    1
+                    {this.props.cart.number}
                 </td>
                 <td>
-                    1,200 원
+                    { numberFormat(this.props.cart.amount) } 원
                 </td>
                 <td>
                     <a href="#" className="btn btn-danger">

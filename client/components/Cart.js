@@ -21,11 +21,17 @@ class Cart extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <CartTr />
+                        {Object.keys( this.props.cartList ).map( (cartId, key)=>{  
+                            return (
+                                <CartTr 
+                                    cartId={cartId} key={key} 
+                                    cart={this.props.cartList[cartId]} />
+                            )
+                        })}
                     </tbody>
                 </table>
                 <div className="text-center" style={{ fontSize: "30px" , marginBottom : "20px"}}>
-                    결제금액 : <span>1,200 원</span>
+                    결제금액 : <span style={{ color : "red"  }}> { numberFormat(this.props.totalAmount) } 원 </span>
                 </div>
                 <div className="text-center">
                     <Link to="/" className="btn btn-default" style={{ marginRight : "10px" }}>계속쇼핑하기</Link>

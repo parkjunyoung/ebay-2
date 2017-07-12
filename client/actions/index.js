@@ -91,3 +91,28 @@ export const addCart = ( productId , number, amount ) => {
     });
     
 };
+
+export const getCart = () => {
+
+    let cartList = {};
+    let totalAmount = 0;
+    if( getCookie('cartList') ){ //있으면 json 파싱함
+        cartList = JSON.parse(getCookie('cartList'));
+    }
+
+    //장바구니 리스트만 받아와서 state에 저장만 한다.
+
+    if( Object.keys(cartList).length ){
+        for( let key in cartList){
+            totalAmount += cartList[key].amount;
+        }
+    }
+
+    return ({
+        type : types.GET_CART,
+        cartList : cartList,
+        count : Object.keys(cartList).length,
+        totalAmount : totalAmount
+    });
+    
+};
