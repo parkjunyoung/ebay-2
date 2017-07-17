@@ -25,6 +25,20 @@ class CartTr extends Component {
     }
 
 
+    componentWillReceiveProps(nextProps){
+        if(nextProps.cartId){
+            axios.get(`/api/admin/products/${nextProps.cartId}`, {
+            }).then( (res) => {
+                this.setState({
+                    product: res.data.product
+                });
+            }).catch( (error) => {
+                console.log(error); 
+            });
+        }
+    }
+
+
     render() {
         return (
             <tr>
