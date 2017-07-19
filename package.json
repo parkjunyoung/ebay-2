@@ -48,6 +48,8 @@
     "react-router-dom": "^4.1.1",
     "request": "^2.81.0",
     "sequelize": "^4.1.0",
+    "socket.io": "^2.0.3",
+    "socket.io-client": "^2.0.3",
     "tedious": "^2.0.0"
   }
 }

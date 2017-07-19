@@ -57,6 +57,9 @@ class Header extends Component {
                         <LinkContainer to="/cart">
                             <NavItem>CART</NavItem>
                         </LinkContainer>
+                        <LinkContainer to="/chat">
+                            <NavItem>CHAT</NavItem>
+                        </LinkContainer>
                         { this.props.isLogin ? "" : <Join/> }
                         { this.props.isLogin ? <Logout/>  : <Login/> }
                     </Nav>
