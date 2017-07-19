@@ -88,4 +88,12 @@ router.get('/shipping/:invc_no', (req,res)=>{
     });
 });
 
+router.get('/order', (req,res)=>{
+    models.Checkout.findAll({
+
+    }).then(function(orderList) {
+        res.json({ orderList : orderList });
+    });
+});
+
 export default router;

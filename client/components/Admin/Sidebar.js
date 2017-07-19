@@ -10,6 +10,7 @@ class Sidebar extends Component {
                     <div className="panel-body">
                         <ul>
                             <li><Link to="/admin/products">제품리스트</Link></li>
+                            <li><Link to="/admin/order">주문리스트</Link></li>
                         </ul>
                     </div>
                 </div>
