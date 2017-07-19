@@ -13,6 +13,8 @@ export default (sequelize, DataTypes) => {
             buyer_addr : { type: DataTypes.STRING(1200) }, //구매자 주소
 
             buyer_postcode : { type: DataTypes.STRING(1200) }, //우편번호
+            status : { type: DataTypes.STRING(500) }, //결재완료, 배송중 등등
+            song_jang : { type: DataTypes.STRING(500) }, //송장번호
 
         }
     );

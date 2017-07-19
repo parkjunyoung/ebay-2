@@ -54,7 +54,9 @@ class CheckoutFrom extends Component {
                     buyer_name : this.state.buyer_name,
                     buyer_tel : this.state.buyer_tel,
                     buyer_addr : this.state.buyer_addr,
-                    buyer_postcode : this.state.buyer_postcode
+                    buyer_postcode : this.state.buyer_postcode,
+
+                    status : "결재완료",
 
                 }).then( (res) => {
                     alert("결제가 완료되었습니다.");

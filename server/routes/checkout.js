@@ -16,7 +16,9 @@ router.post('/complete', (req,res)=>{
         buyer_name : req.body.buyer_name,
         buyer_tel : req.body.buyer_tel,
         buyer_addr : req.body.buyer_addr,
-        buyer_postcode : req.body.buyer_postcode
+        buyer_postcode : req.body.buyer_postcode,
+
+        status : req.body.status,
 
     }).then(function() {
         res.json({ message : "success" });
@@ -35,7 +37,9 @@ router.post('/mobile_complete', (req,res)=>{
         buyer_name : req.body.buyer_name,
         buyer_tel : req.body.buyer_tel,
         buyer_addr : req.body.buyer_addr,
-        buyer_postcode : req.body.buyer_postcode
+        buyer_postcode : req.body.buyer_postcode,
+
+        status : req.body.status,
 
     }).then(function() {
         res.redirect('/');
