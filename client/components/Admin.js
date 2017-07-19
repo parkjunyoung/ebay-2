@@ -18,6 +18,7 @@ class Admin extends Component {
                         <Route path="/admin/products/:id(\d+)" component={ProductDetail} />
                         <Route path="/admin/products/edit/:id(\d+)" component={ProductForm} />
                         <Route exact path="/admin/order" component={Order} />
+                        <Route path="/admin/order/shipping/:id" component={Order}/>
                         <Route path="/admin/order/:id(\d+)" component={OrderDetail} />
                         <Route path="/admin/products/write" component={ProductForm} />
                     </div>

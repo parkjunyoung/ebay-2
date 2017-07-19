@@ -4,6 +4,7 @@ import getDate from '../../helper/getDate';
 import numberFormat from '../../helper/numberFormat';
 import { Link } from 'react-router-dom';
 import { Route } from 'react-router-dom';
+import ShippingModal from './ShippingModal';
 
 class Order extends Component {
 
@@ -54,6 +55,10 @@ class Order extends Component {
                                     </td>
                                     <td>
                                         { order.status }
+                                        { (order.status==="배송중") ? 
+                                            <Link to={`/admin/order/shipping/${order.song_jang}`}>( 위치추적 )</Link>
+                                         : "" }
+                                        
                                     </td>
                                     <td>{ numberFormat(order.paid_amount) }</td>
                                     <td>{ order.buyer_addr }</td>
@@ -67,6 +72,7 @@ class Order extends Component {
                         })}
                     </tbody>
                 </table>
+                <Route path="/admin/order/shipping/:id" component={ShippingModal}/>
             </div>
         );
     }
