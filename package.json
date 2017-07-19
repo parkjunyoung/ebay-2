@@ -30,6 +30,7 @@
     "axios": "^0.16.2",
     "babel-cli": "^6.24.1",
     "body-parser": "^1.17.2",
+    "cheerio": "^1.0.0-rc.2",
     "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
@@ -45,6 +46,7 @@
     "react-dom": "^15.6.1",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
+    "request": "^2.81.0",
     "sequelize": "^4.1.0",
     "tedious": "^2.0.0"
   }
