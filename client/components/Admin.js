@@ -4,6 +4,7 @@ import ProductList from '../components/Admin/ProductList';
 import ProductForm from '../components/Admin/ProductForm';
 import ProductDetail from '../components/Admin/ProductDetail';
 import Order from '../components/Admin/Order';
+import OrderDetail from '../components/Admin/OrderDetail.js';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 class Admin extends Component {
@@ -17,6 +18,7 @@ class Admin extends Component {
                         <Route path="/admin/products/:id(\d+)" component={ProductDetail} />
                         <Route path="/admin/products/edit/:id(\d+)" component={ProductForm} />
                         <Route exact path="/admin/order" component={Order} />
+                        <Route path="/admin/order/:id(\d+)" component={OrderDetail} />
                         <Route path="/admin/products/write" component={ProductForm} />
                     </div>
                 </div>

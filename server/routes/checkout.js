@@ -96,4 +96,24 @@ router.get('/order', (req,res)=>{
     });
 });
 
+router.get('/order/:id', (req,res)=>{
+    models.Checkout.findById(req.params.id).then( (order) => {
+        res.json({ order : order });
+    });
+});
+
+router.put('/order/:id', (req,res)=>{
+    models.Checkout.update(
+        {
+            status : req.body.status,
+            song_jang : req.body.song_jang,
+        }, 
+        { 
+            where : { id: req.params.id } 
+        }
+    ).then(function() {
+        res.json({ message : "success" });
+    });
+});
+
 export default router;
